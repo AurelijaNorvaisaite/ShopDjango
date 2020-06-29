@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>You have visited this page {{ visits_count }}{% if visits_count == 1 %} time{% else %} times{% endif %}.</p>
+    {{ products }}
+{% endblock %}
