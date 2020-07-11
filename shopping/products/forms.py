@@ -5,7 +5,7 @@ class MyForm(forms.Form):
     name = forms.CharField(label='Name', max_length=30)
     city = forms.CharField(label='City', max_length=25)
     country = forms.CharField(label='Country', max_length=25)
-    age = forms.IntegerField(label='Age')
+    age = forms.IntegerField(label='Age', min_value=0)
     GENDER_CHOICES = [('male', 'Male'),
                       ('female', 'Female')]
     gender = forms.CharField(label='Gender', widget=forms.Select(choices=GENDER_CHOICES))
