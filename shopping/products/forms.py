@@ -4,6 +4,7 @@ from django import forms
 class MyForm(forms.Form):
     name = forms.CharField(label='Name', max_length=30)
     city = forms.CharField(label='City', max_length=25)
+    town = forms.CharField(label='Town', max_length=25)
     CHOICES = [('yes', 'Yes, I am happy!'),
                ('no', 'No, I am not happy.')]
     is_happy = forms.ChoiceField(label='Are you happy?', choices=CHOICES, widget=forms.RadioSelect)
