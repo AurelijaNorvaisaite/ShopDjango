@@ -17,7 +17,7 @@ from django.urls import path, include
 from rest_framework import routers
 
 from .views import ProductListView, ProductUpdateView, ProductDetailView, ProductDeleteView, ProductCreateView, counter, \
-    ProductViewSet, CategoryViewSet, my_form
+    ProductViewSet, CategoryViewSet, my_form, thank_you
 
 router = routers.DefaultRouter()
 router.register(r'products', ProductViewSet)
@@ -32,5 +32,6 @@ urlpatterns = [
     path('counter/', counter, name='counter'),
     path('', include(router.urls)),
     path('rest-api/', include('rest_framework.urls', namespace='rest_framework')),
-    path('my-form/', my_form, name='my_form')
+    path('my-form/', my_form, name='my_form'),
+    path('thank-you/', thank_you, name='thank_you')
 ]

@@ -2,7 +2,7 @@ import uuid
 
 import pytest
 
-# pip install django-stubs
+# pip install django-stubs, istall djanopytest
 from django.db.models.aggregates import Avg, Count
 # agregacijos labai svarbios, norint greiciau atlikti skaiciavimus ir neapkrauti duombazes vis nuskaitinejant duomenis
 

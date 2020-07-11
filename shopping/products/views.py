@@ -6,6 +6,11 @@ from rest_framework import viewsets
 from products.models import Product, Category
 from products.serializers import ProductSerializer, CategorySerializer
 
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+
+from .forms import MyForm
+
 
 class ProductListView(ListView):
     model = Product
@@ -65,12 +70,6 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
 
 
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-
-from .forms import MyForm
-
-
 def my_form(request):
     # If this is a POST request we need to process the form data.
     if request.method == 'POST':
@@ -83,7 +82,7 @@ def my_form(request):
             # If so, do it in form.cleaned_data as required.
             # ...
             # Redirect to a new URL.
-            return HttpResponseRedirect('/thank-you')
+            return HttpResponseRedirect('/products/thank-you')
         else:
             # Redirect back to the same page if the data
             # was invalid.
@@ -94,3 +93,8 @@ def my_form(request):
         form = MyForm()
 
     return render(request, 'my_form.html', {'form': form})
+
+def thank_you(request):
+    if request.method == 'GET':
+        form = MyForm(request.GET)
+    return render(request, 'thank_you.html', {'form': form})
