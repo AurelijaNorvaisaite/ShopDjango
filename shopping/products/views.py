@@ -82,8 +82,9 @@ def my_form(request):
             # If so, do it in form.cleaned_data as required.
             # ...
             # Redirect to a new URL.
-            temp_kint = request.POST.get('name')
-            return HttpResponseRedirect(f'/products/thank-you/?inp_value={temp_kint}')
+            kint = request.POST.get('name')
+            kint1 = request.POST.get('age')
+            return HttpResponseRedirect(f'/products/thank-you/?name={kint}&age={kint1}')
         else:
             # Redirect back to the same page if the data
             # was invalid.
@@ -98,6 +99,7 @@ def my_form(request):
 
 def thank_you(request):
     dictionary = request.GET.dict()
-    inp_value = dictionary.get('inp_value', '')
-    context = {'inp_value': inp_value}
+    name = dictionary.get('name', '')
+    age = dictionary.get('age', '')
+    context = {'name': name, 'age': age}
     return render(request, 'thank_you.html', context)
